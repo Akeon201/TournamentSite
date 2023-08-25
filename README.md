@@ -9,6 +9,6 @@ Choose an ide such as Visual Studio from Microsoft or Rider from Jetbrains.
 ## How-To's
 
 ### Creating a new project (Linux)
-For help
+    # For help
     dotnet -h
 
