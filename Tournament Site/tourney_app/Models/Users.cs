@@ -1,22 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using UserRegistration;
+﻿using System;
+using Microsoft.AspNetCore.Identity;
 
-namespace UserRegistration
+namespace team_management_app.Models
 {
-    public class Users : IdentityUser
+    public class User : IdentityUser
     {
         public string FirstName { get; set; }
-        public string LastName { get; set; } 
+        public string LastName { get; set; }
     }
 }
-
-
-public class IdentityUser : IdentityUser<string>
-{
-    public IdentityUser();
-    public IdentityUser(string userName);
-}
-
-

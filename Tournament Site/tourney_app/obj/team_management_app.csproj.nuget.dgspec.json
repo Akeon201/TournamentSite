@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\myff3\\Source\\Repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj": {}
+    "C:\\Users\\myff3\\source\\repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj": {}
   },
   "projects": {
-    "C:\\Users\\myff3\\Source\\Repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj": {
+    "C:\\Users\\myff3\\source\\repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\myff3\\Source\\Repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj",
+        "projectUniqueName": "C:\\Users\\myff3\\source\\repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj",
         "projectName": "team_management_app",
-        "projectPath": "C:\\Users\\myff3\\Source\\Repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj",
+        "projectPath": "C:\\Users\\myff3\\source\\repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj",
         "packagesPath": "C:\\Users\\myff3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\myff3\\Source\\Repos\\TournamentSite\\Tournament Site\\tourney_app\\obj\\",
+        "outputPath": "C:\\Users\\myff3\\source\\repos\\TournamentSite\\Tournament Site\\tourney_app\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\myff3\\AppData\\Roaming\\NuGet\\NuGet.Config",

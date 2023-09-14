@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8F+r9mzxuWHgE1wBFzMSVj/x1pr9W8IYfYT8R0pnCcuSMX2sEiX971AmCA+YjCdsypZN6tvvhYtTVmXhZefCNg==",
+  "dgSpecHash": "mFFWkY+IKhZH3OfRBR088rxC1b82ZAJPReYzI9phuL601pD5bD9j+Jc5MHfZn8ZkXmb/7xnLIuzmxs5pDdNN4g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\myff3\\Source\\Repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj",
+  "projectFilePath": "C:\\Users\\myff3\\source\\repos\\TournamentSite\\Tournament Site\\tourney_app\\team_management_app.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\myff3\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\myff3\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
