@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - user-layout</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/userlayout.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="sidebar">
+        <!-- Left-side navigation menu -->
+        <ul>
+            <li><a href="/Calendars">Calendars</a></li>
+            <li><a href="/Tournaments">Tournaments</a></li>
+            <li><a href="/MyTeam">My Team</a></li>
+            <li><a href="/Profile">Profile</a></li>
+            <li><a href="/Settings">Settings</a></li>
+            <li><a href="/Logout">Logout</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <!-- Page content goes here -->
+        @RenderBody()
+    </div>
+</body>
+</html>

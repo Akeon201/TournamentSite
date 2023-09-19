@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\myff3\\source\\repos\\TournamentSite\\Tournament Site\\tourney_app\\wwwroot\\css\\userlayout.css",
+      "PackagePath": "staticwebassets\\css\\userlayout.css"
+    },
+    {
       "Id": "C:\\Users\\myff3\\source\\repos\\TournamentSite\\Tournament Site\\tourney_app\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
