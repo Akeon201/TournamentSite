@@ -17,9 +17,12 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+           
+            <class ="nav-item">
+            
+                <partial name="_LoginPartial" /> <!-- For when the user is logged in. -->
 
-            <class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Logout">Logout</a> <!-- Needs further testing once the database is up and running.-->
+           
             
             </div>
         </div>
@@ -30,18 +33,22 @@
         <ul>
             <li><a asp-page="/Index">Home</a></li>
             <li><a asp-page="/UserLayout">Hub</a></li>
-            <li><a href="/Calendar">Calendar</a></li>
             <li><a href="/Tools">Tools</a></li>
             <li><a href="/Tournaments">Tournaments</a></li>
             <li><a href="/Team">Team</a></li>
             <li><a href="/Stats">Stats</a></li>
-            <li><a href="/Profile">Profile</a></li>
-            <li><a href="/Settings">Settings</a></li>
         </ul>
     </div>
+    
     <div class="content">
         <!-- Page content goes here -->
         @RenderBody()
     </div>
+
+    <footer>
+        <!-- Footer content -->
+      
+    </footer>
+
 </body>
 </html>
