@@ -1,32 +1,76 @@
-﻿/* Basic styling for the sidebar */
+﻿/* Sidebar container */
 .sidebar {
-    height: 100%;
-    width: 250px;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #333; /* Sidebar background color */
+    width: 250px;
+    height: 100%;
+    background-color: #333;
     padding-top: 20px;
 }
 
-    /* Style for the sidebar links */
+    /* Sidebar links */
     .sidebar a {
+        display: block;
         padding: 10px 15px;
         text-decoration: none;
         font-size: 18px;
-        color: #fff; /* Link text color */
-        display: block;
-        transition: 0.3s; /* Smooth hover transition */
+        color: #fff;
+        transition: 0.3s;
     }
 
         /* Change link color on hover */
         .sidebar a:hover {
-            background-color: #555; /* Hover background color */
-            color: #fff;
+            background-color: #555;
         }
 
-/* Style for the page content */
+/* Page content */
 .page-content {
     margin-left: 250px; /* Adjust this to match sidebar width */
     padding: 15px;
 }
+
+
+/*Tools Layout*/
+
+
+.flex-container-tools {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:50vh;
+    margin:0;
+}
+
+.vods-box p, other-box p {
+    text-align:center;
+}
+
+.vods-box {
+    width: 200px;
+    height: 200px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.other-box {
+    width: 200px;
+    height: 200px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
