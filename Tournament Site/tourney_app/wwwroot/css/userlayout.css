@@ -74,3 +74,17 @@
     cursor: pointer;
 }
 
+/*Vods Layout*/
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+}
+
+    /* Optional styling for the video iframe */
+    .video-container iframe {
+        max-width: 100%;
+        max-height: 100%;
+    }
