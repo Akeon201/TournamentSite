@@ -1,0 +1,41 @@
+﻿@page
+@model team_management_app.Models.VodsLibraryModel
+@{
+    Layout = "_UserLayout";
+}
+
+<div class="text-center">
+    <h1 class="display-4">This is the Vods Library page</h1>
+    <p>Where we will be testing video encoding, playback, etc.</p>
+</div>
+
+<div class="container">
+    @if (Model != null && Model.VideoList != null)
+    {
+        @foreach (var video in Model.VideoList)
+        {
+            <div class="video">
+                @if (!string.IsNullOrEmpty(video.Title) && !string.IsNullOrEmpty(video.Url))
+                {
+                    <h2>@video.Title</h2>
+                    <video controls width="640" height="360">
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.webm" type="video/webm">
+                        <source src="video.ogv" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+                }
+                else
+                {
+                    <p>Invalid video data.</p>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <p>No videos available.</p>
+    }
+</div>
+
+<script src="/_framework/aspnetcore-browser-refresh.js"></script>
