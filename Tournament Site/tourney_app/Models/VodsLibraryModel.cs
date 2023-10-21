@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Azure.Storage.Blobs;
-using System.Threading.Tasks;
 
 namespace team_management_app.Models
 {
+    public class VideoInfo
+    {
+        public string? Name { get; set; }
+        public string? BlobUri { get; set; }
+    }
+
     public class VodsLibraryModel : PageModel
     {
         private readonly BlobServiceClient _blobServiceClient;
 
-        public List<string> Videos { get; set; } = new List<string>();
+        public List<VideoInfo> Videos { get; set; } = new List<VideoInfo>();
 
         public VodsLibraryModel(BlobServiceClient blobServiceClient)
         {
@@ -26,7 +29,13 @@ namespace team_management_app.Models
             {
                 if (blobItem.Name.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase))
                 {
-                    Videos.Add(blobItem.Name);
+                    var blobClient = containerClient.GetBlobClient(blobItem.Name);
+                    var videoInfo = new VideoInfo
+                    {
+                        Name = blobItem.Name,
+                        BlobUri = blobClient.Uri.ToString()
+                    };
+                    Videos.Add(videoInfo);
                 }
             }
         }

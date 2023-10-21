@@ -2,6 +2,7 @@
 @model team_management_app.Models.VodsLibraryModel
 @{
     Layout = "_UserLayout";
+    
 }
 
 <div class="text-center">
@@ -13,6 +14,13 @@
 <ul>
     @foreach (var video in Model.Videos)
     {
-        <li><a asp-page="/Watch" asp-route-video="@video">@video</a></li>
+        <li>
+            @video.Name
+            <video controls width="600">
+                <source src="@video.BlobUri" type="video/mp4" />
+            </video>
+        </li>
     }
 </ul>
+
+
