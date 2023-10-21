@@ -17,30 +17,21 @@ namespace team_management_app.Models
             _blobServiceClient = blobServiceClient;
         }
 
-        public async Task OnPostAsync(IFormFile videoFile, string title)
+        public IActionResult OnPost(IFormFile videoFile, string title)
         {
             if (videoFile != null && videoFile.Length > 0)
             {
-                string containerName = "vodsfortesting"; // Replace with your container name
-                BlobContainerClient containerClient = _blobServiceClient.GetBlobContainerClient(containerName);
-
-                string fileName = Guid.NewGuid() + Path.GetExtension(videoFile.FileName);
-                BlobClient blobClient = containerClient.GetBlobClient(fileName);
-
-                using (Stream stream = videoFile.OpenReadStream())
-                {
-                    await blobClient.UploadAsync(stream, overwrite: true);
-                }
-
-                // Store the title as a metadata key-value pair
-                await blobClient.SetMetadataAsync(new Dictionary<string, string>
-                {
-                    { "Title", title }
-                });
+                // ... (upload logic)
 
                 // Redirect to the VodsLibrary page after upload
-                RedirectToPage("/VodsLibrary");
+                return RedirectToPage("/VodsLibrary");
             }
+
+            // Handle the case where no file was uploaded
+            // You can customize this part based on your requirements.
+            return Page();
         }
+
+
     }
 }

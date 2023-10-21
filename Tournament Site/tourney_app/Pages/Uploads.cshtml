@@ -5,19 +5,56 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Upload Video</h1>
+    <h1 class="display-4">Upload Videos</h1>
+    <p>Upload your videos here.</p>
 </div>
 
-<div class="upload-form">
-    <form method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="videoFile">Video File</label>
-            <input type="file" class="form-control" name="videoFile" id="videoFile" accept=".mp4" required>
-        </div>
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" id="title" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
-    </form>
+<!-- Add a button to trigger the upload modal -->
+<div class="text-center">
+    <button id="uploadButton" data-toggle="modal" data-target="#uploadModal">Upload</button>
 </div>
+
+
+<!-- Pop-up Form For Uploading -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">Upload Video</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Your upload form goes here -->
+                <form method="post" enctype="multipart/form-data" asp-page-handler="OnPost" asp-route-title="Title">
+
+                    <div class="form-group">
+                        <label for="videoFile">Choose a video file:</label>
+                        <input type="file" class="form-control-file" name="videoFile" id="videoFile">
+                    </div>
+                    <div class="form-group">
+                        <label for="videoTitle">Video Title:</label>
+                        <input type="text" class="form-control" name="videoTitle" id="videoTitle">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--For now the js will go here, but it will be moved to a better place later-->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // When the upload button is clicked
+        $("#uploadButton").click(function () {
+            // Show the modal
+            $("#uploadModal").modal("show");
+        });
+    });
+</script>
