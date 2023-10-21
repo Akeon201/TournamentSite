@@ -79,7 +79,7 @@
 
 
 
-/*Library Button*/
+/*Library and Upload Buttons*/
 
 
 .library-box {
@@ -106,9 +106,35 @@
 
 
 }
-/*Library Video Player*/
 
-/* Style the video container */
+.library-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin: 0;
+}
+
+
+.upload-button {
+    width: 200px;
+    height: 200px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+
+/* Library css */
+
+
+/* Center the entire video container */
 .video-container {
     display: flex;
     flex-direction: column;
@@ -141,3 +167,4 @@ video {
     border: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
