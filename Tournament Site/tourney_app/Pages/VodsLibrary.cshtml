@@ -2,7 +2,6 @@
 @model team_management_app.Models.VodsLibraryModel
 @{
     Layout = "_UserLayout";
-    
 }
 
 <div class="text-center">
@@ -10,17 +9,17 @@
     <p>Where we will be testing video encoding, playback, etc.</p>
 </div>
 
-<h1>Video List</h1>
-<ul>
-    @foreach (var video in Model.Videos)
-    {
-        <li>
-            @video.Name
-            <video controls width="600">
-                <source src="@video.BlobUri" type="video/mp4" />
-            </video>
-        </li>
-    }
-</ul>
-
-
+<div class="video-container">
+    <h1>Video List</h1>
+    <ul class="video-list">
+        @foreach (var video in Model.Videos)
+        {
+            <li class="video-item">
+                <h2 class="video-title">@video.Name</h2>
+                <video controls width="600">
+                    <source src="@video.BlobUri" type="video/mp4" />
+                </video>
+            </li>
+        }
+    </ul>
+</div>

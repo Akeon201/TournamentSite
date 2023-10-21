@@ -74,20 +74,9 @@
     cursor: pointer;
 }
 
-/*Library Video Player*/
 
-.video-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Adjust as needed */
-}
 
-    /* Optional styling for the video iframe */
-    .video-container iframe {
-        max-width: 100%;
-        max-height: 100%;
-    }
+
 
 
 /*Library Button*/
@@ -114,4 +103,41 @@
     border-radius: 10px;
     margin: 10px;
     cursor: pointer;
+
+
+}
+/*Library Video Player*/
+
+/* Style the video container */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the video list */
+.video-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Style each video item */
+.video-item {
+    text-align: center;
+    margin: 10px;
+}
+
+/* Style the video title */
+.video-title {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Style the video player */
+video {
+    max-width: 100%;
+    height: auto;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
