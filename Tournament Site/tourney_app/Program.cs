@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Builder;
+using Azure.Storage.Blobs;
+using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
 using tourney_app.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json"); // Load configuration from appsettings.json
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection") ??
-                       throw new InvalidOperationException("Connection string 'PostgreSQLConnection' not found.");
+    throw new InvalidOperationException("Connection string 'PostgreSQLConnection' not found.");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
@@ -24,6 +23,35 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 builder.Services.AddRazorPages();
 
+// Register BlobServiceClient
+// Register BlobServiceClient
+builder.Services.AddSingleton(provider =>
+{
+    var config = provider.GetRequiredService<IConfiguration>();
+    var storageAccountUri = config["StorageAccount:Uri"];
+
+    if (string.IsNullOrWhiteSpace(storageAccountUri))
+    {
+        throw new InvalidOperationException("StorageAccount:Uri not found in configuration.");
+    }
+
+    var connectionString = config["AzureBlobStorageConnection"];
+
+    if (string.IsNullOrWhiteSpace(connectionString))
+    {
+        throw new InvalidOperationException("AzureBlobStorageConnection not found in configuration.");
+    }
+
+    var blobServiceClient = new BlobServiceClient(connectionString);
+    return blobServiceClient;
+});
+
+
+
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,7 +62,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios.
     app.UseHsts();
 }
 
@@ -42,9 +69,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapRazorPages();
 
 app.Run();

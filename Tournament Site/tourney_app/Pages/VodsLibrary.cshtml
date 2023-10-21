@@ -9,32 +9,10 @@
     <p>Where we will be testing video encoding, playback, etc.</p>
 </div>
 
-<div class="container">
-    @if (Model != null && Model.VideoList != null)
+<h1>Video List</h1>
+<ul>
+    @foreach (var video in Model.Videos)
     {
-        @foreach (var video in Model.VideoList)
-        {
-            <div class="video">
-                @if (!string.IsNullOrEmpty(video.Title) && !string.IsNullOrEmpty(video.Url))
-                {
-                    <h2>@video.Title</h2>
-                    <video controls width="640" height="360">
-                        <source src="@video.Url" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                }
-                else
-                {
-                    <p>Invalid video data.</p>
-                }
-            </div>
-        }
+        <li><a asp-page="/Watch" asp-route-video="@video">@video</a></li>
     }
-    else
-    {
-        <p>No videos available.</p>
-    }
-</div>
-
-
-<script src="/_framework/aspnetcore-browser-refresh.js"></script>
+</ul>

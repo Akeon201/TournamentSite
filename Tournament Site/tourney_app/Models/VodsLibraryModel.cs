@@ -1,53 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Configuration;
-using Azure.Storage.Blobs;
+﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Azure.Storage.Blobs;
 using System.Threading.Tasks;
 
 namespace team_management_app.Models
 {
     public class VodsLibraryModel : PageModel
     {
-        private readonly IConfiguration _configuration;
+        private readonly BlobServiceClient _blobServiceClient;
 
-        public VodsLibraryModel(IConfiguration configuration)
+        public List<string> Videos { get; set; } = new List<string>();
+
+        public VodsLibraryModel(BlobServiceClient blobServiceClient)
         {
-            _configuration = configuration;
-            VideoList = new List<Video>(); // Initialize VideoList
+            _blobServiceClient = blobServiceClient;
         }
-
-        public List<Video> VideoList { get; set; }
 
         public async Task OnGetAsync()
         {
-            VideoList = await GetVideoListAsync();
-        }
+            var containerName = "vodsfortesting"; // Replace with your container name
+            var containerClient = _blobServiceClient.GetBlobContainerClient(containerName);
 
-        public class Video
-        {
-            public string Title { get; set; } = string.Empty;
-            public string Url { get; set; } = string.Empty;
-        }
-
-        private async Task<List<Video>> GetVideoListAsync()
-        {
-            var connectionString = _configuration.GetConnectionString("AzureBlobStorageConnection");
-            var containerName = "vodsfortesting";
-
-            var blobServiceClient = new BlobServiceClient(connectionString);
-            var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
-
-            var videos = new List<Video>();
             await foreach (var blobItem in containerClient.GetBlobsAsync())
             {
-                videos.Add(new Video
+                if (blobItem.Name.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase))
                 {
-                    Title = blobItem.Name, // Use the blob name as the title, or provide a custom title
-                    Url = containerClient.GetBlobClient(blobItem.Name).Uri.ToString()
-                });
+                    Videos.Add(blobItem.Name);
+                }
             }
-
-            return videos;
         }
     }
 }
