@@ -27,7 +27,31 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.FirstName" class="form-control" autocomplete="username" aria-required="true" placeholder="First Name" />
+                <label asp-for="Input.FirstName">First Name</label>
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.LastName" class="form-control" autocomplete="username" aria-required="true" placeholder="Last Name" />
+                <label asp-for="Input.LastName">Last Name</label>
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" placeholder="Username" />
+                <label asp-for="Input.Username">Username</label>
+                <span asp-validation-for="Input.Username" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Input.Purpose" class="form-control" aria-required="true">
+                    <option value="Owner">I'm the owner of a team</option>
+                    <option value="Player">I'm a player of a team</option>
+                    <option value="Solo">I'm just a solo user</option>
+                </select>
+                <label asp-for="Input.Purpose">Purpose</label>
+                <span asp-validation-for="Input.Purpose" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Sign Up</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">

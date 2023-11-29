@@ -7,12 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 
 public class Program
 {
-
     public static async Task Main(string[] args)
     {
-
-
-
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
@@ -85,9 +81,7 @@ public class Program
             {
                 if (!await roleManager.RoleExistsAsync(role))
                     await roleManager.CreateAsync(new IdentityRole(role));
-
             }
-
         }
 
         using (var scope = app.Services.CreateScope())
@@ -97,21 +91,31 @@ public class Program
             string email = "myff3drvmble@gmail.com";
             string password = "fm?fn5@3gA,K)jJ";
 
-
             if (await userManager.FindByEmailAsync(email) == null)
             {
-                var user = new IdentityUser();
-                user.UserName = email;
-                user.Email = email;
+                var user = new IdentityUser
+                {
+                    UserName = email,
+                    Email = email
+                };
 
+                await userManager.CreateAsync(user, password);
 
-                userManager.CreateAsync(user, password);
+                // Find the user by email
+                var existingUser = await userManager.FindByEmailAsync(email);
 
-                userManager.AddToRoleAsync(user, "Admin");
+                if (existingUser != null)
+                {
+                    // Check if the user is not already in the "Admin" role
+                    if (!await userManager.IsInRoleAsync(existingUser, "Admin"))
+                    {
+                        // Add the user to the "Admin" role
+                        await userManager.AddToRoleAsync(existingUser, "Admin");
+                    }
+                }
             }
         }
 
-        app.Run();
-
+            app.Run();
     }
 }
