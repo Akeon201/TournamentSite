@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\myff3\source\repos\TournamentSite\Tournament Site\tourney_app
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -70,6 +78,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Pages/OwnerDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3duZXJEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Pages/Privacy.cshtml]
@@ -98,10 +110,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Pages/UserLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlckxheW91dC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Pages/VerfifyAccountInfo.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmVyZmlmeUFjY291bnRJbmZvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/myff3/source/repos/TournamentSite/Tournament Site/tourney_app/Pages/Vods.cshtml]

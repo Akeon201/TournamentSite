@@ -29,7 +29,6 @@ namespace team_management_app.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
@@ -87,12 +86,6 @@ namespace team_management_app.Areas.Identity.Pages.Account
             public string Purpose { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
-        {
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        }
-
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
@@ -114,7 +107,7 @@ namespace team_management_app.Areas.Identity.Pages.Account
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
+                         "/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
@@ -134,16 +127,26 @@ namespace team_management_app.Areas.Identity.Pages.Account
                             "Owner" => "Owner",
                             "Player" => "Player",
                             "Solo" => "User",
-                            "Admin" => "Admin",  // I put this here temporally to bypass my issues with assigning an admin role to an exhisting account.
+                            "Admin" => "Admin",
                             _ => throw new InvalidOperationException("Invalid purpose value."),
                         };
 
                         await _userManager.AddToRoleAsync(user, role);
 
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        // Redirect the user based on their role
+                        var redirectUrl = role switch
+                        {
+                            "Owner" => "/OwnerDashboard",  // Replace with the actual route for the owner dashboard
+                            "Player" => "/PlayerDashboard",  // Replace with the actual route for the player dashboard
+                            "User" => "/UserDashboard",  // Replace with the actual route for the user dashboard
+                            "Admin" => "/AdminDashboard",  // Replace with the actual route for the admin dashboard
+                            _ => throw new InvalidOperationException("Invalid role value."),
+                        };
+
+                        return LocalRedirect(redirectUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
@@ -153,6 +156,7 @@ namespace team_management_app.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
 
         private IdentityUser CreateUser()
         {
