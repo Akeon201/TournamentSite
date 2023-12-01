@@ -3,9 +3,139 @@
 @{
     Layout = "_UserLayout"; // Specify the name of your new layout
 }
+
+
 <div class="text-center">
-    <h1 class="display-4">This is the Owner Dashboard.</h1>
+    <h1 class="display-4">Owner Dashboard</h1>
 </div>
 
-<p>Here I will put a way for the owner to create a team. Adding a descrition, image, name, ect. <br /> They will be locked off from everything else until the form is finsihed. Then they can come back anytime to change anyhting.</p>
-<p>Also able to invite players by "some" means...</p>
+<!-- Button to trigger the upload modal -->
+<div class="text-center">
+    <button id="createTeamButton" data-toggle="modal" data-target="#createTeamModal">Edit Team</button>
+</div>
+
+
+<!-- Pop-up Team Info -->
+<div class="modal fade" id="createTeamModal" tabindex="-1" role="dialog" aria-labelledby="createTeamModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createTeamModalLabel">Team Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Your form goes here -->
+                <form method="post" enctype="multipart/form-data" asp-page-handler="OnPost" asp-route-title="Title">
+
+                   
+                    <!--Team Name-->
+                    <div class="form-group">
+                        <label for="teamName">Team Name:</label>
+                        <input type="text" class="form-control" name="teamName" id="teamName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamLogo">Team Logo:</label>
+                        <input type="file" class="form-control-file" name="teamLogo" id="teamLogo" accept="image/*">
+                    </div>
+
+
+                    <!--Team Discription-->
+                    <div class="form-group">
+                        <label for="teamDiscription">Team Description:</label>
+                        <input type="text" class="form-control" name="teamDiscription" id="teamDiscription">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2>Your Team</h2>
+    <table class="table" id="teamTable">
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Team Logo</th>
+                <th>Team Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically added here using JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+
+<!--For now the js will go here, but it will be moved to a better place later-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Load existing team data from localStorage
+        var storedTeamData = JSON.parse(localStorage.getItem("teamData")) || [];
+
+        // Function to update the table with the team data
+        function updateTable() {
+            $("#teamTable tbody").empty();
+            storedTeamData.forEach(function (team) {
+                var newRow = "<tr><td>" + team.teamName + "</td><td>" + team.teamLogo + "</td><td>" + team.teamDescription + "</td></tr>";
+                $("#teamTable tbody").append(newRow);
+            });
+        }
+
+        // When the upload button is clicked
+        $("#createTeamButton").click(function () {
+            // Show the modal
+            $("#createTeamModal").modal("show");
+
+            // Load data from localStorage and populate the form
+            var storedTeamName = localStorage.getItem("teamName") || '';
+            var storedTeamLogo = localStorage.getItem("teamLogo") || '';
+            var storedTeamDescription = localStorage.getItem("teamDescription") || '';
+
+            $("#teamName").val(storedTeamName);
+            $("#teamLogo").val(storedTeamLogo);
+            $("#teamDiscription").val(storedTeamDescription);
+        });
+
+        // Form submission logic
+        $("#createTeamModal form").submit(function (event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get values from the form
+            var teamName = $("#teamName").val();
+            var teamLogo = $("#teamLogo").val();
+            var teamDescription = $("#teamDiscription").val();
+
+            // Validate the form inputs if needed
+
+            // Update the array with the new team information
+            var newTeam = { teamName: teamName, teamLogo: teamLogo, teamDescription: teamDescription };
+            storedTeamData.push(newTeam);
+
+            // Update the table
+            updateTable();
+
+            // Store data in localStorage for persistence
+            localStorage.setItem("teamName", teamName);
+            localStorage.setItem("teamLogo", teamLogo);
+            localStorage.setItem("teamDescription", teamDescription);
+
+            // Store the array in localStorage
+            localStorage.setItem("teamData", JSON.stringify(storedTeamData));
+
+            // Hide the modal after submission if needed
+            $("#createTeamModal").modal("hide");
+        });
+
+        // Initialize the table on page load
+        updateTable();
+    });
+</script>
