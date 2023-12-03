@@ -9,6 +9,6 @@ namespace team_management_app.Pages
 {
     public class OwnerDashboardModel : PageModel
     {
-        
+
     }
 }

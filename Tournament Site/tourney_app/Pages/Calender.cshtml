@@ -1,0 +1,29 @@
+﻿@page
+@model team_management_app.Models.UploadModel
+@{
+    Layout = "_UserLayout";
+}
+@if (User.IsInRole("Player"))
+{
+    <div class="text-center">
+        <h2>This is where the calender is.</h2>
+    </div>
+}
+else if (User.IsInRole("Admin"))
+{
+    <div class="text-center">
+        <h2>This is where the calender is.</h2>
+    </div>
+}
+else if (User.IsInRole("Owner"))
+{
+    <div class="text-center">
+        <h2>You need to "CREATE" a team before you can  access this.</h2>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h2>You need to "JOIN" a team before you can  access this.</h2>
+    </div>
+}

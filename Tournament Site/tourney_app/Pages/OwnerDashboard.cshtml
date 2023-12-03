@@ -6,12 +6,12 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Owner Dashboard</h1>
+    <h1 class="display-4">Your Team</h1>
 </div>
 
-<!-- Button to trigger the upload modal -->
+<!-- Button to trigger the upload modal for editing the team info. -->
 <div class="text-center">
-    <button id="createTeamButton" data-toggle="modal" data-target="#createTeamModal">Edit Team</button>
+    <button id="createTeamButton" data-toggle="modal" data-target="#createTeamModal">Creat/Edit Team</button>
 </div>
 
 
@@ -54,20 +54,54 @@
     </div>
 </div>
 
-<div class="container mt-4">
-    <h2>Your Team</h2>
-    <table class="table" id="teamTable">
-        <thead>
-            <tr>
-                <th>Team Name</th>
-                <th>Team Logo</th>
-                <th>Team Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Rows will be dynamically added here using JavaScript -->
-        </tbody>
-    </table>
+
+
+
+
+
+
+
+
+<!-- All things displayed are not set in stone and subject to change.-->
+<!-- Player List -->
+<div class="text-center">
+
+    <h5> Here will be the list of players on the team</h5>
+    <p>You will be able to see each players username, their role and an option for editing their status on the team.</p>
+    <p>For example editng roles, kicking.</p>
+    <ul>
+
+        <li>Example</li>
+        <li>Example</li>
+        <li>Example</li>
+        <li>Example</li>
+        <li>Example</li>
+        <li>Example</li>
+        <li>Example</li>
+    </ul>
+
+</div>
+
+<!-- Upcomping Events-->
+<div class="text-center">
+    <h5>Here will be small showcase of the upcoming events the team has.</h5>
+    <p>Along with any other news or announcements that the owner wishes to display.</p>
+
+</div>
+<!--Socials-->
+<div class="text-center">
+    <h5>Here will be the socials they wish to showcase.</h5>
+    <p>Along with a widget for their personal discord that only authorized users have access to.</p>
+   
+</div>
+
+
+<!--Discord Widget-->
+<div class="text-center">
+    @Html.Raw("<widgetbot server=\"501968358074220546\" channel=\"684143090231017482\" width=\"1000\" height=\"400\"></widgetbot>")
+</div>
+<div>
+    @Html.Raw("<script src=\"https://cdn.jsdelivr.net/npm/@widgetbot/html-embed\"></script>")
 </div>
 
 
@@ -77,65 +111,10 @@
 
 <script>
     $(document).ready(function () {
-        // Load existing team data from localStorage
-        var storedTeamData = JSON.parse(localStorage.getItem("teamData")) || [];
-
-        // Function to update the table with the team data
-        function updateTable() {
-            $("#teamTable tbody").empty();
-            storedTeamData.forEach(function (team) {
-                var newRow = "<tr><td>" + team.teamName + "</td><td>" + team.teamLogo + "</td><td>" + team.teamDescription + "</td></tr>";
-                $("#teamTable tbody").append(newRow);
-            });
-        }
-
         // When the upload button is clicked
         $("#createTeamButton").click(function () {
             // Show the modal
             $("#createTeamModal").modal("show");
-
-            // Load data from localStorage and populate the form
-            var storedTeamName = localStorage.getItem("teamName") || '';
-            var storedTeamLogo = localStorage.getItem("teamLogo") || '';
-            var storedTeamDescription = localStorage.getItem("teamDescription") || '';
-
-            $("#teamName").val(storedTeamName);
-            $("#teamLogo").val(storedTeamLogo);
-            $("#teamDiscription").val(storedTeamDescription);
         });
-
-        // Form submission logic
-        $("#createTeamModal form").submit(function (event) {
-            // Prevent the default form submission
-            event.preventDefault();
-
-            // Get values from the form
-            var teamName = $("#teamName").val();
-            var teamLogo = $("#teamLogo").val();
-            var teamDescription = $("#teamDiscription").val();
-
-            // Validate the form inputs if needed
-
-            // Update the array with the new team information
-            var newTeam = { teamName: teamName, teamLogo: teamLogo, teamDescription: teamDescription };
-            storedTeamData.push(newTeam);
-
-            // Update the table
-            updateTable();
-
-            // Store data in localStorage for persistence
-            localStorage.setItem("teamName", teamName);
-            localStorage.setItem("teamLogo", teamLogo);
-            localStorage.setItem("teamDescription", teamDescription);
-
-            // Store the array in localStorage
-            localStorage.setItem("teamData", JSON.stringify(storedTeamData));
-
-            // Hide the modal after submission if needed
-            $("#createTeamModal").modal("hide");
-        });
-
-        // Initialize the table on page load
-        updateTable();
-    });
+    }); 
 </script>
