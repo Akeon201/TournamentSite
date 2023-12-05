@@ -115,7 +115,7 @@ namespace team_management_app.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect("/UserLayout");
+                    return LocalRedirect("/Dashboard");
                 }
                 if (result.RequiresTwoFactor)
                 {
